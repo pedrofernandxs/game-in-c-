@@ -22,12 +22,11 @@ public class meuJogo
     public static void Main(string[] args)
     {
         // INTRODUÇÃO
-        Console.WriteLine("Nickname do jogador 1: ");
+        Console.WriteLine("NOME DO JOGADOR 1: ");
         string nickJogador1 = Console.ReadLine();
 
         // PLAYER VS PLAYER
-
-        Console.WriteLine("Nickname do jogador 2: ");
+        Console.WriteLine("NOME DO JOGADOR 2: ");
         string nickJogador2 = Console.ReadLine();
 
         int energyJg1 = 10;
@@ -40,32 +39,33 @@ public class meuJogo
 
         if (ordemJogador == 1)
         {
-            Console.WriteLine("==== O JOGADOR 1 COMECA O JOGO =====");
+            Console.WriteLine("==== O JOGADOR 1 COMEÇA O JOGO =====");
         }
         else
         {
-            Console.WriteLine("O jogador 2 começa o jogo!");
+            Console.WriteLine("==== O JOGADOR 2 COMEÇA O JOGO =====");
         }
 
         // LOOP ATÉ QUE ENERGIA SEJA 0
         while (energyJg1 > 0 || energyJg2 > 0)
         {
+             // VERIFICA SE O JOGADOR 1 PODE JOGAR E TEM SALDO DE ENERGIAS DISPONÍVEIS.
             if (ordemJogador == 1 && energyJg1 <= 0)
             {
                 Console.WriteLine("O JOGADOR 1 FICOU SEM ENERGIA. O JOGO CONTINUA COM O JOGADOR 2.");
-                ordemJogador = 2; // Altera para o jogador 2 jogar
+                ordemJogador = 2; // ALTERNAR PARA O JOGADOR 2 JOGAR
                 continue;
             }
 
-            // Verifica se o jogador 2 pode jogar
+            // VERIFICA SE O JOGADOR 2 PODE JOGARE TEM SALDO DE ENERGIAS DISPONÍVEIS.
             if (ordemJogador == 2 && energyJg2 <= 0)
             {
                 Console.WriteLine("O JOGADOR 2 FICOU SEM ENERGIA. O JOGO CONTINUA COM O JOGADOR 1.");
-                ordemJogador = 1; // Altera para o jogador 1 jogar
+                ordemJogador = 1; // ALTERNA PARA O JOGADOR 1 JOGAR
                 continue;
             }
 
-            Console.WriteLine("Digite ENTER para sortear as cartas!");
+            Console.WriteLine("PRESSIONE << ENTER >> PARA SORTEAR AS CARTAS.");
             string start = Console.ReadLine();
             Console.WriteLine("===================================");
             Console.Clear();
@@ -178,7 +178,7 @@ public class meuJogo
             Console.WriteLine(nomeCartaUm + " -- " + nomeCartaDois + " -- " + nomeCartaTres);
             Console.WriteLine("===================================");
 
-            // ALTERNANCIA DOS JOGADORES
+            // LÓGICA QUE ALTERNA OS JOGADORES 1 E 2
             if (ordemJogador == 1)
             {
                 proximoJogador = 2;
@@ -242,10 +242,10 @@ public class meuJogo
 
             if (nomeCartaUm == "Penalti" && nomeCartaDois == "Penalti" && nomeCartaTres == "Penalti")
             {
-                Console.WriteLine("Escolha uma opção para bater o penalti: ESQUERDA[E], DIREITA[D], CENTRO[C]");
+                Console.WriteLine("ESCOLHA UMA OPÇÃO PARA BATER O PÊNALTI: ESQUERDA[E], DIREITA[D], CENTRO[C]");
                 string escolhaPenalti = Console.ReadLine();
 
-                Console.WriteLine("Onde vai defender o penalti: ESQUERDA[E], DIREITA[D], CENTRO[C]");
+                Console.WriteLine("ONDE VAI DEFENDER O PÊNALTI: ESQUERDA[E], DIREITA[D], CENTRO[C]");
                 string defesaPenalti = Console.ReadLine();
 
                 if (escolhaPenalti != defesaPenalti)
@@ -278,7 +278,7 @@ public class meuJogo
 
             if (nomeCartaUm == "Falta" && nomeCartaDois == "Falta" && nomeCartaTres == "Falta")
             {
-                Console.WriteLine("Passou a vez!");
+                Console.WriteLine("PASSOU A VEZ!");
                 if (ordemJogador == 1)
                 {
                     energyJg1 = energyJg1 - 1;
@@ -299,7 +299,7 @@ public class meuJogo
                 {
                     energyJg2 = energyJg2 - 1;
                 }
-                Console.WriteLine("O jogador " + ordemJogador + " perdeu uma energia.");
+                Console.WriteLine("O JOGADOR " + ordemJogador + " PERDEU UMA ENERGIA.");
 
                 if ((ordemJogador == 1 && vezesCartaoAmareloJg1 == 1) || (ordemJogador == 2 && vezesCartaoAmareloJg2 == 1))
                 {
@@ -335,7 +335,7 @@ public class meuJogo
 
             if (nomeCartaUm == "Cartão Vermelho" && nomeCartaDois == "Cartão Vermelho" && nomeCartaTres == "Cartão Vermelho")
             {
-                Console.WriteLine("O jogador " + ordemJogador + " perdeu 2 energias");
+                Console.WriteLine("O JOGADOR " + ordemJogador + " PERDEU 2 ENERGIAS");
 
                 if (ordemJogador == 1)
                 {
@@ -348,10 +348,12 @@ public class meuJogo
             }
 
 
-            Console.WriteLine("Vez do jogador " + proximoJogador + "!");
+            Console.WriteLine("VEZ DO JOGADOR " + proximoJogador + "!");
 
 
             ordemJogador = proximoJogador;
+            
+            // MOSTRA AO USUÁRIO AS INFORMAÇÕES CONFORME O DECORRER DA PARTIDA
             Console.WriteLine("= = = = = = = = = = = = = = = = =");
             Console.WriteLine("PONTOS DO JOGADOR 1: " + pontosjg1);
             Console.WriteLine("PONTOS DO JOGADOR 2: " + pontosjg2);
@@ -364,6 +366,8 @@ public class meuJogo
             Console.WriteLine("= = = = = = = = = = = = = = = = =");
 
         }
+        
+        // LÓGICA QUE FINALIZA O JOGO E DETERMINA O VENCEDOR/EMPATE
         if (energyJg1 <= 0 && energyJg2 <= 0)
         {
             Console.WriteLine("= = = = = = = = = = = = = = = = =");
@@ -421,7 +425,7 @@ public class meuJogo
             else
             {
                 // OPÇÃO INVÁLIDA.
-                Console.WriteLine("Opção inválida. Continuando a partida...");
+                Console.WriteLine("OPÇÃO INVÁLIDA.");
             }
         }
     }
