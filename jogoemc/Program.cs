@@ -30,8 +30,8 @@ public class meuJogo
         Console.WriteLine("Nickname do jogador 2: ");
         string nickJogador2 = Console.ReadLine();
 
-        int energyJg1 = 5;
-        int energyJg2 = 5;
+        int energyJg1 = 10;
+        int energyJg2 = 10;
 
         // SORTEIO DE QUEM VAI COMEÇAR O JOGO
         Random objRand = new Random();
